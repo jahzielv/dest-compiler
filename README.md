@@ -23,3 +23,7 @@ To execute your Dest code, pipe the output into the Node.js REPL, like so
 ```bash
 dest-compiler yourDestFile.dest | node
 ```
+
+## Disclaimer
+
+There's not much in the way of useful things like error handling or a coherent language definition, so... don't use this in production ;)
