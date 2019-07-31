@@ -1,13 +1,14 @@
 package main
 
 import (
-	"compiler/generator"
-	"compiler/parser"
-	"compiler/tokenizer"
 	"fmt"
 	"io/ioutil"
 	"os"
 	"strings"
+
+	"github.com/jahzielv/dest-compiler/generator"
+	"github.com/jahzielv/dest-compiler/parser"
+	"github.com/jahzielv/dest-compiler/tokenizer"
 )
 
 func main() {

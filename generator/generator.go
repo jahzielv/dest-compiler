@@ -1,9 +1,10 @@
 package generator
 
 import (
-	"compiler/parser"
 	"fmt"
 	"strings"
+
+	"github.com/jahzielv/dest-compiler/parser"
 )
 
 // Generate generates target code

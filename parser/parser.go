@@ -1,9 +1,10 @@
 package parser
 
 import (
-	"compiler/tokenizer"
 	"fmt"
 	"strconv"
+
+	"github.com/jahzielv/dest-compiler/tokenizer"
 )
 
 func shift(s *[]tokenizer.Token) tokenizer.Token {
