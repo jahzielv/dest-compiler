@@ -4,6 +4,12 @@ This is a compiler that I wrote by following along with Gary Bernhardt's [Compil
 
 I called the language _Dest_ after Destroy All Software, Gary's screencast company.
 
+## Installation
+
+```bash
+go get github.com/jahzielv/dest-compiler
+```
+
 ## Running
 
 ```bash
