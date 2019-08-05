@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
-	"os"
 	"strings"
 
 	"github.com/jahzielv/dest-compiler/generator"
@@ -11,21 +10,27 @@ import (
 	"github.com/jahzielv/dest-compiler/tokenizer"
 )
 
-func main() {
-	data, err := ioutil.ReadFile(os.Args[1])
-	if err != nil {
-		fmt.Println(err.Error())
-	}
-	tkzr := tokenizer.Tokenizer{Code: string(data)}
+// Compile compiles from Dest to JS.
+func Compile(src []byte) string {
+	tkzr := tokenizer.Tokenizer{Code: string(src)}
 	tkns, err := tkzr.Tokenize()
 	if err != nil {
-		fmt.Println(err.Error())
-	} else {
-		prsr := parser.Parser{Tokens: tkns}
-		tree := prsr.Parse()
-		runtime := "function add(x, y) {return x + y};"
-		test := "console.log(f(1, 2));"
-		code := []string{runtime, generator.Generate(tree), test}
-		fmt.Println(strings.Join(code, "\n"))
+		return err.Error()
 	}
+	prsr := parser.Parser{Tokens: tkns}
+	tree := prsr.Parse()
+	runtime := "function add(x, y) {return x + y};"
+	test := "console.log(f(1, 2));"
+	code := []string{runtime, generator.Generate(tree), test}
+	return strings.Join(code, "\n")
+}
+
+func main() {
+	data, err := ioutil.ReadFile("in.dest")
+	// data, err := ioutil.ReadFile(os.Args[1])
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+	fmt.Println(Compile(data))
+
 }
