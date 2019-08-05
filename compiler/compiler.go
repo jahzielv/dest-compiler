@@ -1,8 +1,6 @@
-package main
+package compiler
 
 import (
-	"fmt"
-	"io/ioutil"
 	"strings"
 
 	"github.com/jahzielv/dest-compiler/generator"
@@ -23,14 +21,4 @@ func Compile(src []byte) string {
 	test := "console.log(f(1, 2));"
 	code := []string{runtime, generator.Generate(tree), test}
 	return strings.Join(code, "\n")
-}
-
-func main() {
-	data, err := ioutil.ReadFile("in.dest")
-	// data, err := ioutil.ReadFile(os.Args[1])
-	if err != nil {
-		fmt.Println(err.Error())
-	}
-	fmt.Println(Compile(data))
-
 }
